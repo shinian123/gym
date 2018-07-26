@@ -278,6 +278,12 @@ register(
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )
+register(
+    id='Bulldog-v0',
+    entry_point='gym.envs.mujoco:BulldogEnv',
+    max_episode_steps=1000,
+    reward_threshold=360.0,
+)
 
 register(
     id='Humanoid-v2',
@@ -420,7 +426,12 @@ for reward_type in ['sparse', 'dense']:
         kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
         max_episode_steps=100,
     )
-
+    register(
+        id='BulldogPickAndPlace{}-v1'.format(suffix),
+        entry_point='gym.envs.robotics:BulldogPickAndPlaceEnv',
+        kwargs=kwargs,
+        max_episode_steps=50,
+    )
 # Atari
 # ----------------------------------------
 
